@@ -2,9 +2,9 @@
 using System.Net;
 using System.Text.Json;
 
-namespace API.Middlrware
+namespace API.Middleware
 {
-    public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env )
+    public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
     {
         public async Task InvokeAsync(HttpContext context)
         {
@@ -16,7 +16,7 @@ namespace API.Middlrware
             {
                 logger.LogError(ex, ex.Message);
                 context.Response.ContentType = "application/json";
-                context.Response.StatusCode =(int)HttpStatusCode.InternalServerError;
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
                 var response = env.IsDevelopment()
                     ? new ApiException(context.Response.StatusCode, ex.Message, ex.StackTrace)
@@ -27,8 +27,8 @@ namespace API.Middlrware
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                 };
 
-                var json = JsonSerializer.Serialize(response, options); 
-                await context.Response.WriteAsync(json);    
+                var json = JsonSerializer.Serialize(response, options);
+                await context.Response.WriteAsync(json);
             }
 
         }
