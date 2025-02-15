@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
     [Authorize]
+    [Route("api/users")]
     public class UsersController(IUserRepository userRepository) : BaseApiController
     {
 

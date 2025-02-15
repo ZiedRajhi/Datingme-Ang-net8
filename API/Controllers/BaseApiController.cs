@@ -12,17 +12,17 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class BaseApiController : Controller
     {
-        
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+
+        //public IActionResult Error()
+        //{
+        //    return View("Error!");
+        //}
     }
 }
